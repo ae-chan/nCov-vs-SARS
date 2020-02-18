@@ -1,7 +1,7 @@
 library(gdata)
 library(ggplot2)
 library(ggthemes)
-setwd('Google Drive/Projects/nCov')
+setwd('Google Drive/Projects/nCov-vs-SARS')
 nCov <- read.csv('data/nCov-deaths.csv')
 SARS <- read.xls('data/sars_final.xlsx')
 
@@ -37,9 +37,9 @@ names(data) <- c("day", "COVID19", "SARS")
 plot <- ggplot(data = data, aes(x=day, y=value, colour=variable)) +
   geom_line(aes(y=COVID19 , colour="violet")) +
   geom_line(aes(y=SARS, colour="cyan")) +
-  ggtitle("wash your hands man") +
-  xlab("# of days since someone bothered to start a body count") +
-  ylab("death toll") +
+  ggtitle("COVID vs SARS Mortality Comparison") +
+  xlab("Number of days") +
+  ylab("Death toll") +
   scale_color_discrete(labels = c("SARS globally (WHO)", "COVID in just China alone"))
 
 plot + 
